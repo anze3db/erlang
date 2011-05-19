@@ -1,15 +1,16 @@
 -module(lib_misc).
--export([sum/1]).
--export([for/3]).
+-export([sum/1,for/3,qsort/1]).
 
 sum(L) -> sum(L, 0).
-
 sum([H|T], N) -> sum(T, N+H);
 sum([], N) -> N.
-
-% EXAMPLE: lib_misc:for(0,10,fun(I) -> I*I end). 
 
 for(Max, Max, F) -> [F(Max)];
 for(I, Max, F)   -> [F(I)|for(I+1, Max, F)].
 
+qsort([]) -> [];
+qsort([Pivot|T]) ->
+    qsort([X || X <- T, X < Pivot])
+    ++ [Pivot] ++
+    qsort([X || X <- T, X >= Pivot]).
  
