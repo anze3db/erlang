@@ -1,6 +1,7 @@
 -module(division).
 -export([d/2]).
 
+prev(0) -> 0;
 prev(X) -> X - 1.
 
 next(X) -> X + 1.
