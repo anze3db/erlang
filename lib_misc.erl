@@ -1,5 +1,5 @@
 -module(lib_misc).
--export([sum/1,for/3,qsort/1]).
+-export([sum/1,for/3,qsort/1,pythag/1,perms/1]).
 
 sum(L) -> sum(L, 0).
 sum([H|T], N) -> sum(T, N+H);
@@ -22,4 +22,8 @@ pythag(N) ->
             A+B+C =< N,    
             A*A + B*B =:= C*C
         ].
+
+perms([]) -> [[]];
+perms(L)  -> [[H|T] || H <- L, T <- perms(L--[H])].
+        
 
